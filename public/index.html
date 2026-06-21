@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rida Ahmidan El Hassani - Web Development Portfolio</title>
+    <!-- CSS LINK VIA MAPSTRUCTUUR -->
+    <link rel="stylesheet" href="../src/assets/style.css">
+</head>
+<body>
+
+    <!-- NAVIGATIEBALK -->
+    <header>
+        <!-- 
+          BRON ARIA-LABEL OP NAV: https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/
+          UITLEG: Ik gebruik aria-label om de landmark-regio 'nav' een unieke naam te geven, zodat screenreaders het portfolio-menu kunnen onderscheiden van andere navigatie-elementen.
+        -->
+        <nav class="topbar" aria-label="Hoofdnavigatie van het portfolio">
+            <div class="logo">
+                <a href="#" aria-label="Rida Portfolio Startpagina">MangaReader</a>
+            </div>
+            
+            <!-- 
+              BRON MENUBAR ROL: https://www.w3.org/WAI/ARIA/apg/patterns/menubar/
+              UITLEG: role="menubar" en role="menuitem" vertellen de screenreader dat dit een horizontaal applicatiemenu is. aria-current="page" geeft aan dat de gebruiker nu op de actieve pagina staat.
+            -->
+            <ul class="menu" role="menubar">
+                <li role="none"><a href="#" class="active" role="menuitem" aria-current="page">Mijn Projecten</a></li>
+                <li role="none"><a href="#info-sectie" role="menuitem">Over Project</a></li>
+            </ul>
+
+            <!-- ZOEKBALK IN NAVBAR -->
+            <div class="zoek-box">
+                <label for="zoekbalk" class="sr-only">Zoek een project op titel</label>
+                <!-- 
+                  BRON ARIA-CONTROLS: https://www.w3.org/WAI/ARIA/apg/patterns/search/
+                  UITLEG: aria-controls linkt het invoerveld direct aan het catalogus-grid met hetzelfde ID. Hierdoor weet een hulpapplicatie dat het typen invloed heeft op de resultaten in dat specifieke grid.
+                -->
+                <input type="search" id="zoekbalk" placeholder="Zoek een project..." aria-controls="catalogus-grid">
+            </div>
+
+            <div class="knoppen">
+                <button class="inlog-btn" aria-label="Inloggen op uw account">Inloggen</button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="hoofdinhoud">
+        
+        <!-- MEEST BEKENKEN SECTIE -->
+        <!-- 
+          BRON ARIA-BY: https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/
+          UITLEG: aria-labelledby koppelt de section aan de H2-titel via het ID, zodat de screenreader de naam van deze regio voorleest wanneer een blinde gebruiker erin navigeert.
+        -->
+        <section class="pagina-sectie" aria-labelledby="populair-titel">
+            <h2 id="populair-titel">Meest Bekeken Projecten</h2>
+            <div id="populair-grid" class="manga-grid" role="region" aria-label="Populaire projecten resultaten">
+                <!-- Gevuld door main.js -->
+            </div>
+        </section>
+
+        <hr class="lijn">
+
+        <!-- CATALOGUS SECTIE -->
+        <section class="pagina-sectie" aria-labelledby="catalogus-titel">
+            <h2 id="catalogus-titel">Manga Catalogus</h2>
+            
+            <!-- 
+              BRON ARIA-PRESSED: https://www.w3.org/WAI/ARIA/apg/patterns/button/
+              UITLEG: role="group" bundelt de knoppen. aria-pressed geeft met true/false live door aan de screenreader welke filterknop op dit moment is ingedrukt door de gebruiker.
+            -->
+            <div class="filter-box" role="group" aria-label="Filter projecten op programmeertaal">
+                <button class="filter-btn active" data-tech="all" aria-pressed="true">Alles</button>
+                <button class="filter-btn" data-tech="HTML, PDO" aria-pressed="false">HTML</button>
+                <button class="filter-btn" data-tech="Laravel" aria-pressed="false">Laravel</button>
+                <button class="filter-btn" data-tech="Laravel, React" aria-pressed="false">React</button>
+                <button class="filter-btn" data-tech="Unity" aria-pressed="false">Unity</button>
+            </div>
+
+            <!-- 
+              BRON ARIA-LIVE: https://www.w3.org/WAI/ARIA/apg/practices/aria-live/
+              UITLEG: aria-live="polite" zorgt ervoor dat wanneer het grid verandert door een zoekopdracht of filter, de screenreader de nieuwe resultaten netjes voorleest zodra de gebruiker stopt met typen.
+            -->
+            <div id="catalogus-grid" class="manga-grid" role="region" aria-live="polite" aria-label="Manga zoekresultaten">
+                <!-- Gevuld door main.js -->
+            </div>
+        </section>
+
+        <hr class="lijn">
+
+        <!-- PROJECT INFO SECTIE -->
+        <section id="info-sectie" class="info-box" aria-labelledby="info-titel">
+            <h2 id="info-titel">Project Uitlichting (Toegankelijkheid & UX)</h2>
+            <p>Dit platform gebruikt een rustgevend groen kleurenpalet om oogvermoeidheid tegen te gaan bij het lezen. De kaarten zijn compacter gemaakt, waardoor er meer content tegelijkertijd zichtbaar is op het scherm (betere UX).</p>
+            <p>De website is volledig <strong>a11y-compliant</strong> gebouwd door het gebruik van semantische HTML5-elementen en ARIA-live regio's, waardoor de zoekfunctie perfect bruikbaar is voor gebruikers met een visuele beperking.</p>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Rida Ahmidan El Hassani - Klas OITSDO24B</p>
+    </footer>
+
+    <script src="../src/main.js"></script>
+</body>
+</html>
